@@ -9,7 +9,7 @@ const TopNavigation = (props) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar--logo">PhotoLabs</span>
       <TopicList topics={props.topics} photos={props.photos}/>
-      <FavIcon fill='#FF0000'/>
+      <FavIcon />
     </div>
   )
 }
