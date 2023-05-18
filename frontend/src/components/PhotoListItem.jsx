@@ -16,11 +16,3 @@ const PhotoListItem = (props) => {
 };
 
 export default PhotoListItem
-
-PhotoListItem.defaultProps = {
-  username: 'Jacob',
-  imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-  id: 1,
-  hideUserName: false,
-  
-}
