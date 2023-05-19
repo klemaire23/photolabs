@@ -1,26 +1,37 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SELECT_FAVOURITE':
+      const id = action.payload;
+      if (state[id] !== undefined) {
+        return {...state, [id]: !state[id]};
+      } else {
+        return {...state, [id]: true };
+      }
+      default:
+    return state;
+  }
+} ;
 
 const HomeRoute = function (props) {
+  
+  const [photoFavourites, dispatch] = useReducer(reducer, {});
 
-  const [photoFavourites, setIsPhotoFavourites] = useState({});
   const selectFavourite = (id) => {
-    console.log("##0 ID:", id);
-    if (photoFavourites[id] !== undefined) {
-      setIsPhotoFavourites({...photoFavourites, [id]: !photoFavourites[id]});
-    } else {
-      setIsPhotoFavourites({...photoFavourites, [id]: true});
-    }
+      dispatch({ type: 'SELECT_FAVOURITE', payload: id });
   };
 
-  console.log('#1FAVES:', photoFavourites);
+  // console.log('#1FAVES:', photoFavourites);
 
   return (
   <div className="home-route">
-    <TopNavigationBar topics={props.topics}/>
+    <TopNavigationBar topics={props.topics}
+    photoFavourites={photoFavourites} 
+    selectFavourite={selectFavourite}/>
     <PhotoList 
     photos={props.photos} 
     photoFavourites={photoFavourites} 
