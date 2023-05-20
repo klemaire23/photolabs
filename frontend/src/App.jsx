@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HomeRoute from './routes/HomeRoute';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import photosData from './mocks/photos.json';
 import topicsData from './mocks/topics.json';
 import './App.scss';
 
+const App = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  const openModal = (photo) => {
+    setSelectedPhoto(photo);
+  };
 
+  const closeModal = () => {
+    setSelectedPhoto(null);
+  };
 
-// Note: Rendering a single component to build components in isolation
+  return (
+    <div className="App">
+      <HomeRoute photos={photosData} topics={topicsData} openModal={openModal} />
+      {selectedPhoto && <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} />}
+    </div>
+  );
+};
 
-let photoMockData = photosData;
-let topicMockData = topicsData;
-
-const App = () => (
-
-  <div className="App">
-
-    <HomeRoute photos={photoMockData} topics={topicMockData}/>
-
-  </div>
-
-);
-
-export default App
-
+export default App;
