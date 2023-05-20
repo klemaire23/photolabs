@@ -11,7 +11,7 @@ const PhotoListItem = (props) => {
     <div className="photo-list--item" onClick={handleClick}>
       <PhotoFavButton 
         id={props.id}
-        photoFavourites={props.photoFavourites[props.id]}
+        photoFavourites={props.photoFavourites?.[props.id]}
         selectFavourite={props.selectFavourite}
       />
       <img className="photo-list--image" src={props.imageSource} />

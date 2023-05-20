@@ -18,8 +18,18 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photosData} topics={topicsData} openModal={openModal} />
-      {selectedPhoto && <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} />}
+      <HomeRoute 
+      photos={photosData} 
+      topics={topicsData} 
+      openModal={openModal} 
+      />
+      {selectedPhoto && 
+      <PhotoDetailsModal 
+      photo={selectedPhoto} 
+      closeModal={closeModal}
+      photos={photosData}
+      topics={topicsData}
+      />}
     </div>
   );
 };

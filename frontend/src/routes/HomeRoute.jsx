@@ -32,6 +32,7 @@ const HomeRoute = function (props) {
       selectFavourite={selectFavourite} />
       <PhotoList 
       photos={props.photos} 
+      topics={props.topics}
       photoFavourites={photoFavourites} 
       selectFavourite={selectFavourite} 
       openModal={props.openModal} />

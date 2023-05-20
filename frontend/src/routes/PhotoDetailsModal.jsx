@@ -1,9 +1,10 @@
 import React from 'react';
 import FavIcon from '../components/FavIcon';
+import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
-  const { photo, closeModal, photoFavourites, selectFavourite } = props;
+  const { photo, photos, topics, closeModal, openModal, photoFavourites, selectFavourite } = props;
 
   if (!photo) {
     return null;
@@ -15,6 +16,10 @@ export const PhotoDetailsModal = (props) => {
   };
 
   const isFavourite = photoFavourites && photoFavourites[photo.id];
+
+  const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === photo.topicId);
+  const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === photo.topicId && p.id !== photo.id);
+
 
   return (
     <div className="photo-details-modal">
@@ -33,17 +38,29 @@ export const PhotoDetailsModal = (props) => {
               </defs>
             </svg>
           </button>
-          <div className="modal-photo-container">
+          <div className="photo-details-modal--favicon">
             <FavIcon
               isFavourite={isFavourite}
               onClick={handleFavouriteClick}
-              className="modal-fav-icon"
               />
           </div>
-          <div>
-            <img src={photo.urls.regular} alt={photo.alt_description} />
-            <div>{photo.user.username}</div>
-            <div>{photo.description}</div>
+          
+            <img className="photo-details-modal--image" src={photo.urls.regular} alt={photo.alt_description} />
+            {/* <div>{photo.user.username}</div>
+            <div>{photo.description}</div> */}
+            {selectedPhotoTopic && <div>Topic: {selectedPhotoTopic.title}</div>}
+          
+          <div className="photo-details-modal--images">
+            <h3 className="photo-details-modal--header">Similar Photos</h3>
+          {similarPhotos && similarPhotos.length > 0 ? (
+            <PhotoList
+              photos={similarPhotos}
+              topics={topics}
+              openModal={openModal}
+              photoFavourites={photoFavourites}
+              selectFavourite={selectFavourite}
+              />
+          ) : null}
           </div>
         </div>
       </div>
