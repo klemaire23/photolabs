@@ -25,7 +25,7 @@ const App = () => {
       />
       {selectedPhoto && 
       <PhotoDetailsModal 
-      photo={selectedPhoto} 
+      selectedPhoto={selectedPhoto} 
       closeModal={closeModal}
       photos={photosData}
       topics={topicsData}

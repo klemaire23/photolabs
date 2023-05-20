@@ -1,24 +1,24 @@
 import React from 'react';
-import FavIcon from '../components/FavIcon';
+import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
-  const { photo, photos, topics, closeModal, openModal, photoFavourites, selectFavourite } = props;
+  const { selectedPhoto, photos, topics, closeModal, openModal, photoFavourites, selectFavourite } = props;
 
-  if (!photo) {
+  if (!selectedPhoto) {
     return null;
   }
 
   const handleFavouriteClick = (event) => {
     event.stopPropagation();
-    selectFavourite(photo.id);
+    selectFavourite(selectedPhoto.id);
   };
 
-  const isFavourite = photoFavourites && photoFavourites[photo.id];
+  const isFavourite = photoFavourites && photoFavourites[selectedPhoto.id];
 
-  const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === photo.topicId);
-  const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === photo.topicId && p.id !== photo.id);
+  const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === selectedPhoto.topicId);
+  const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === selectedPhoto.topicId && p.id !== selectedPhoto.id);
 
 
   return (
@@ -38,14 +38,15 @@ export const PhotoDetailsModal = (props) => {
               </defs>
             </svg>
           </button>
+          <div className="photo-details-modal--image-container">
           <div className="photo-details-modal--favicon">
-            <FavIcon
+            <PhotoFavButton
               isFavourite={isFavourite}
               onClick={handleFavouriteClick}
               />
           </div>
-          
-            <img className="photo-details-modal--image" src={photo.urls.regular} alt={photo.alt_description} />
+          </div>
+            <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
             {/* <div>{photo.user.username}</div>
             <div>{photo.description}</div> */}
             {selectedPhotoTopic && <div>Topic: {selectedPhotoTopic.title}</div>}

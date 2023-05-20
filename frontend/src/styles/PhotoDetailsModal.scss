@@ -33,7 +33,13 @@
 .photo-details-modal--image {
   margin-left: 62px;
   max-width: 95%;
-  border-radius: 50px;
+  border-radius: 12px;
+}
+
+.photo-details-modal--favicon {
+  position: relative;
+  top: 15px;
+  left: 70px;
 }
 
 .photo-details-modal--top-bar {
