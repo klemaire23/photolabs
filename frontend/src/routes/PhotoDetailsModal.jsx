@@ -1,10 +1,18 @@
 import React from 'react';
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
+import PhotoListItem from '../components/PhotoListItem';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
-  const { selectedPhoto, photos, topics, closeModal, openModal, photoFavourites, selectFavourite } = props;
+  const { selectedPhoto, 
+    photos, 
+    topics, 
+    closeModal, 
+    openModal, 
+    photoFavourites, 
+    selectFavourite 
+  } = props;
 
   if (!selectedPhoto) {
     return null;
@@ -41,18 +49,27 @@ export const PhotoDetailsModal = (props) => {
           <div className="photo-details-modal--image-container">
           <div className="photo-details-modal--favicon">
             <PhotoFavButton
+              id={selectedPhoto.id}
               isFavourite={isFavourite}
               onClick={handleFavouriteClick}
               />
           </div>
           </div>
             <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
-            <div className="photo-details-modal--user">{selectedPhoto.user.username}</div>
-            <div className="photo-details-modal--userlocation">{selectedPhoto.location.city}, {selectedPhoto.location.country}</div>
+            <div className="photo-details-modal--user-details">
+            <img className="photo-details-modal--user-profile" src={`profile-1.jpg`} />
+            <div className="photo-details-modal--user-info">
+              <div className="photo-details-modal--user">{selectedPhoto.user.username}</div>
+              <div className="photo-details-modal--userlocation">{selectedPhoto.location.city}, {selectedPhoto.location.country}</div>
+            </div>
+            </div>
             {selectedPhotoTopic && <div>Topic: {selectedPhotoTopic.title}</div>}
-          
+
+          <hr className="horizontal-break" />
+
+          <h3 className="photo-details-modal--header">Related Photos</h3>
+          <div className="photo-details-modal-similar--container">
           <div className="photo-details-modal--images">
-            <h3 className="photo-details-modal--header">Related Photos</h3>
           {similarPhotos && similarPhotos.length > 0 ? (
             <PhotoList
               photos={similarPhotos}
@@ -62,6 +79,7 @@ export const PhotoDetailsModal = (props) => {
               selectFavourite={selectFavourite}
               />
           ) : null}
+          </div>
           </div>
         </div>
       </div>

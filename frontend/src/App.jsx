@@ -7,8 +7,8 @@ import './App.scss';
 
 const App = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  // const [likedPhoto, setLikedPhoto] = useState(false);
-
+  const [photoFavourites, setPhotoFavourites] = useState({});
+  
   const openModal = (photo) => {
     setSelectedPhoto(photo);
   };
@@ -17,9 +17,13 @@ const App = () => {
     setSelectedPhoto(null);
   };
 
-  // function likedPhotoOn(props) {
-  //   const {likedPhoto, setLike} = props;
-  // };
+  const selectFavourite = (id) => {
+    setPhotoFavourites((prevFavourites) => ({
+      ...prevFavourites,
+      [id]: !prevFavourites[id]
+    }));
+  };
+
 
   return (
     <div className="App">
@@ -27,10 +31,14 @@ const App = () => {
       photos={photosData} 
       topics={topicsData} 
       openModal={openModal} 
+      photoFavourites={photoFavourites}
+      selectFavourite={selectFavourite}
       />
       {selectedPhoto && 
       <PhotoDetailsModal 
       selectedPhoto={selectedPhoto} 
+      selectFavourite={selectFavourite}
+      photoFavourites={photoFavourites}
       closeModal={closeModal}
       photos={photosData}
       topics={topicsData}
