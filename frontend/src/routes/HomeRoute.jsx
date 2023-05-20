@@ -2,27 +2,13 @@ import React, { useReducer } from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SELECT_FAVOURITE':
-      const id = action.payload;
-      if (state[id] !== undefined) {
-        return { ...state, [id]: !state[id] };
-      } else {
-        return { ...state, [id]: true };
-      }
-    default:
-      return state;
-  }
-};
+import useApplicationData from '../hooks/useApplicationData';
 
 const HomeRoute = function (props) {
-  const [photoFavourites, dispatch] = useReducer(reducer, {});
-
-  const selectFavourite = (id) => {
-    dispatch({ type: 'SELECT_FAVOURITE', payload: id });
-  };
+  const { state, actions } = useApplicationData();
+  const { photoFavourites } = state;
+  const { selectFavourite } = actions;
+  
 
   return (
     <div className="home-route">

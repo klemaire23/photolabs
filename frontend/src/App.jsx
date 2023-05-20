@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
+import useApplicationData from './hooks/useApplicationData';
 import photosData from './mocks/photos.json';
 import topicsData from './mocks/topics.json';
 import './App.scss';
 
 const App = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [photoFavourites, setPhotoFavourites] = useState({});
+
+  const { state, actions } = useApplicationData();
+  const { selectedPhoto, photoFavourites } = state;
+  const { openModal, closeModal, selectFavourite } = actions;
   
-  const openModal = (photo) => {
-    setSelectedPhoto(photo);
-  };
+  // const [selectedPhoto, setSelectedPhoto] = useState(null);
+  // const [photoFavourites, setPhotoFavourites] = useState({});
+  
+  // const openModal = (photo) => {
+  //   setSelectedPhoto(photo);
+  // };
 
-  const closeModal = () => {
-    setSelectedPhoto(null);
-  };
+  // const closeModal = () => {
+  //   setSelectedPhoto(null);
+  // };
 
-  const selectFavourite = (id) => {
-    setPhotoFavourites((prevFavourites) => ({
-      ...prevFavourites,
-      [id]: !prevFavourites[id]
-    }));
-  };
+  // const selectFavourite = (id) => {
+  //   setPhotoFavourites((prevFavourites) => ({
+  //     ...prevFavourites,
+  //     [id]: !prevFavourites[id]
+  //   }));
+  // };
 
 
   return (

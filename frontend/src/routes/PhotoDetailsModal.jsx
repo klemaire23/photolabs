@@ -13,7 +13,7 @@ export const PhotoDetailsModal = (props) => {
     photoFavourites, 
     selectFavourite 
   } = props;
-
+  
   if (!selectedPhoto) {
     return null;
   }
