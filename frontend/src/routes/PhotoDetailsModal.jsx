@@ -47,12 +47,12 @@ export const PhotoDetailsModal = (props) => {
           </div>
           </div>
             <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
-            {/* <div>{photo.user.username}</div>
-            <div>{photo.description}</div> */}
+            <div className="photo-details-modal--user">{selectedPhoto.user.username}</div>
+            <div className="photo-details-modal--userlocation">{selectedPhoto.location.city}, {selectedPhoto.location.country}</div>
             {selectedPhotoTopic && <div>Topic: {selectedPhotoTopic.title}</div>}
           
           <div className="photo-details-modal--images">
-            <h3 className="photo-details-modal--header">Similar Photos</h3>
+            <h3 className="photo-details-modal--header">Related Photos</h3>
           {similarPhotos && similarPhotos.length > 0 ? (
             <PhotoList
               photos={similarPhotos}

@@ -7,6 +7,7 @@ import './App.scss';
 
 const App = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  // const [likedPhoto, setLikedPhoto] = useState(false);
 
   const openModal = (photo) => {
     setSelectedPhoto(photo);
@@ -15,6 +16,10 @@ const App = () => {
   const closeModal = () => {
     setSelectedPhoto(null);
   };
+
+  // function likedPhotoOn(props) {
+  //   const {likedPhoto, setLike} = props;
+  // };
 
   return (
     <div className="App">
