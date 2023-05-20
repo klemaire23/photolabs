@@ -5,16 +5,16 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
-  const { id, photoFavourites, selectFavourite } = props;
+  // const { id, photoFavourites, selectFavourite } = props;
 
-  const handleClick = (event) => {
-    event.stopProgagation();
-    selectFavourite(id);
+  const handleLikeClick = (event) => {
+    event.stopPropagation();
+    props.selectFavourite(props.id);
   };
 
   return (
-    <div className="photo-list--fav-icon" onClick={() => selectFavourite(id)}>
-      <FavIcon fill={photoFavourites ? '#FF0000' : '#EEEEEE'}/>
+    <div className="photo-list--fav-icon" onClick={handleLikeClick}>
+      <FavIcon fill={props.photoFavourites ? '#FF0000' : '#EEEEEE'}/>
     </div>
   );
 }
