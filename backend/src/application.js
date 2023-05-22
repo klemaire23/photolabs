@@ -6,10 +6,12 @@ const bodyparser = require("body-parser");
 const helmet = require("helmet");
 const cors = require("cors");
 
+const db = require("./db/index")
 const app = express();
-
-const photos = require("./routes/photos");
-const topics = require("./routes/topics");
+// console.log('##0 DB:', db);
+// console.log('DB QUERY:', db.query);
+// const photos = require("./routes/photos");
+// const topics = require("./routes/topics");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -32,10 +34,11 @@ module.exports = function application(
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
+  app.use(express.static(path.join(__dirname, "public")));
 
   // TODO: update to topics and photos
-  app.use("/api", photos());
-  app.use("/api", topics());
+  app.use("/api", photos(db));
+  app.use("/api", topics(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([
