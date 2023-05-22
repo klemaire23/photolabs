@@ -21,6 +21,7 @@ const HomeRoute = function (props) {
       topics={props.topics}
       photoFavourites={photoFavourites} 
       selectFavourite={selectFavourite} 
+      similarPhotos={props.photos.similar_photos}
       openModal={props.openModal} />
     </div>
   );

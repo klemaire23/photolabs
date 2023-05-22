@@ -22,6 +22,7 @@ const PhotoList = (props) => {
         hideUserName={photo.hideUserName}
         photoFavourites={photoFavourites}
         selectFavourite={selectFavourite}
+        similarPhotos={photos.similar_photos}
         topics={topics}
         onClick={() => handleClick(photo)}
       />

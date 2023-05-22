@@ -25,7 +25,8 @@ export const PhotoDetailsModal = (props) => {
   const isFavourite = photoFavourites && photoFavourites[selectedPhoto.id];
 
   const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === selectedPhoto.topicId);
-  const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === selectedPhoto.topicId && p.id !== selectedPhoto.id);
+  // const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === selectedPhoto.topicId && p.id !== selectedPhoto.id);
+  const similarPhotos = selectedPhoto.similar_photos;
 
 
   return (
