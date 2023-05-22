@@ -14,8 +14,9 @@ const PhotoList = (props) => {
       <PhotoListItem
         key={photo.id}
         id={photo.id}
-        imageSource={photo.urls.thumb}
+        imageSource={photo.urls.regular}
         username={photo.user.username}
+        userProfile={photo.user.profile}
         userCity={photo.location.city}
         userCountry={photo.location.country}
         hideUserName={photo.hideUserName}

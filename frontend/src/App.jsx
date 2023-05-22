@@ -13,12 +13,29 @@ const App = () => {
   const { selectedPhoto, photoFavourites } = state;
   const { openModal, closeModal, selectFavourite } = actions;
 
+  useEffect(() => {
+    const fetchPhotosAndTopics = async () => {
+      try {
+        const photosResponse = await fetch('/api/photos');
+        const photosData = await photosResponse.json();
+        setPhotos(photosData);
+  
+        const topicsResponse = await fetch('/api/topics');
+        const topicsData = await topicsResponse.json();
+        setTopics(topicsData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchPhotosAndTopics();
+  }, []);
 
   return (
     <div className="App">
       <HomeRoute 
-      // photos={photosData} 
-      // topics={topicsData} 
+      photos={photos} 
+      topics={topics} 
       openModal={openModal} 
       photoFavourites={photoFavourites}
       selectFavourite={selectFavourite}
@@ -29,8 +46,8 @@ const App = () => {
       selectFavourite={selectFavourite}
       photoFavourites={photoFavourites}
       closeModal={closeModal}
-      // photos={photosData}
-      // topics={topicsData}
+      photos={photos}
+      topics={topics}
       />}
     </div>
   );

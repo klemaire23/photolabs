@@ -1,7 +1,6 @@
 import React from 'react';
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
-import PhotoListItem from '../components/PhotoListItem';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
@@ -57,7 +56,7 @@ export const PhotoDetailsModal = (props) => {
           </div>
             <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
             <div className="photo-details-modal--user-details">
-            <img className="photo-details-modal--user-profile" src={`profile-1.jpg`} />
+            <img className="photo-details-modal--user-profile" src={selectedPhoto.user.profile} />
             <div className="photo-details-modal--user-info">
               <div className="photo-details-modal--user">{selectedPhoto.user.username}</div>
               <div className="photo-details-modal--userlocation">{selectedPhoto.location.city}, {selectedPhoto.location.country}</div>
