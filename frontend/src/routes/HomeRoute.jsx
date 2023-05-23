@@ -5,9 +5,11 @@ import '../styles/HomeRoute.scss';
 import useApplicationData from '../hooks/useApplicationData';
 
 const HomeRoute = function (props) {
-  const { state, actions } = useApplicationData();
-  const { photoFavourites } = state;
-  const { selectFavourite } = actions;
+  // const { state, actions } = useApplicationData();
+  // const { photoFavourites } = state;
+  // const { selectFavourite } = actions;
+  const { photoFavourites, selectFavourite } = props;
+  
   
 
   return (
@@ -15,7 +17,9 @@ const HomeRoute = function (props) {
       <TopNavigationBar 
       topics={props.topics} 
       photoFavourites={photoFavourites} 
-      selectFavourite={selectFavourite} />
+      selectFavourite={selectFavourite}
+      handleTopicClick={props.handleTopicClick}
+      />
       <PhotoList 
       photos={props.photos} 
       topics={props.topics}

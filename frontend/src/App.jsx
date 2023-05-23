@@ -11,6 +11,8 @@ const App = () => {
   const [topics, setTopics] = useState([]);
   const { state, actions } = useApplicationData();
   const { selectedPhoto, photoFavourites } = state;
+  console.log('APP PHOTOFAV', photoFavourites);
+  console.log('STATE:', state);
   const { openModal, closeModal, selectFavourite } = actions;
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const App = () => {
         const photosResponse = await fetch('/api/photos');
         const photosData = await photosResponse.json();
         setPhotos(photosData);
-  
+
         const topicsResponse = await fetch('/api/topics');
         const topicsData = await topicsResponse.json();
         setTopics(topicsData);
@@ -27,30 +29,45 @@ const App = () => {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchPhotosAndTopics();
   }, []);
 
-  return (
-    <div className="App">
-      <HomeRoute 
-      photos={photos} 
-      topics={topics} 
-      openModal={openModal} 
-      photoFavourites={photoFavourites}
-      selectFavourite={selectFavourite}
-      />
-      {selectedPhoto && 
-      <PhotoDetailsModal 
-      selectedPhoto={selectedPhoto} 
-      selectFavourite={selectFavourite}
-      photoFavourites={photoFavourites}
-      closeModal={closeModal}
+  const handleTopicClick = (topicId) => {
+      if (topicId) {
+        fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setPhotos(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    };
+
+return (
+  <div className="App">
+    <HomeRoute
       photos={photos}
       topics={topics}
+      openModal={openModal}
+      photoFavourites={photoFavourites}
+      selectFavourite={selectFavourite}
+      handleTopicClick={handleTopicClick}
+    />
+    {selectedPhoto &&
+      <PhotoDetailsModal
+        selectedPhoto={selectedPhoto}
+        selectFavourite={selectFavourite}
+        photoFavourites={photoFavourites}
+        closeModal={closeModal}
+        openModal={openModal}
+        photos={photos}
+        topics={topics}
       />}
-    </div>
-  );
+  </div>
+);
 };
 
 export default App;

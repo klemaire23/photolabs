@@ -1,9 +1,16 @@
 import React from 'react';
 import PhotoFavButton from '../components/PhotoFavButton';
+import useApplicationData from '../hooks/useApplicationData';
 import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
+  // const { state, actions } = useApplicationData();
+  // const { photoFavourites } = state;
+  // const { selectFavourite } = actions;
+// console.log('#7 PHOTOFAVESS:', photoFavourites);
+
+  // console.log('PROPS:', props);
   const { selectedPhoto, 
     photos, 
     topics, 
@@ -12,17 +19,22 @@ export const PhotoDetailsModal = (props) => {
     photoFavourites, 
     selectFavourite 
   } = props;
-  
+
+  console.log('#7 PHOTOFAVESS:', photoFavourites);
+
+  // console.log('#3 STATE:', state);
   if (!selectedPhoto) {
     return null;
   }
 
   const handleFavouriteClick = (event) => {
     event.stopPropagation();
+    // console.log('##0 LIKE BUTTON CLICKED');
     selectFavourite(selectedPhoto.id);
   };
 
   const isFavourite = photoFavourites && photoFavourites[selectedPhoto.id];
+  console.log('#1 IS THIS WORKING:', isFavourite, photoFavourites, photoFavourites[selectedPhoto.id]);
 
   const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === selectedPhoto.topicId);
   // const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === selectedPhoto.topicId && p.id !== selectedPhoto.id);
@@ -50,8 +62,10 @@ export const PhotoDetailsModal = (props) => {
           <div className="photo-details-modal--favicon">
             <PhotoFavButton
               id={selectedPhoto.id}
+              photoFavourites={photoFavourites}
               isFavourite={isFavourite}
-              onClick={handleFavouriteClick}
+              // onClick={handleFavouriteClick}
+              selectFavourite={selectFavourite}
               />
           </div>
           </div>

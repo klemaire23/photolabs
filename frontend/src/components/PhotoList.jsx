@@ -3,7 +3,10 @@ import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
 const PhotoList = (props) => {
+  // console.log('#1PROPS:', props);
+
   const { photos, topics, openModal, photoFavourites, selectFavourite } = props;
+  console.log('#6 PHOTOFAVOUR:', photoFavourites);
 
   const handleClick = (photo) => {
     openModal(photo);
@@ -22,7 +25,7 @@ const PhotoList = (props) => {
         hideUserName={photo.hideUserName}
         photoFavourites={photoFavourites}
         selectFavourite={selectFavourite}
-        similarPhotos={photos.similar_photos}
+        similarPhotos={photo.similar_photos}
         topics={topics}
         onClick={() => handleClick(photo)}
       />

@@ -1,12 +1,13 @@
 import React from 'react';
 import TopicList from './TopicList';
 import FavIcon from './FavIcon';
-
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
- const { topics, photos, photoFavourites, selectFavourite } = props;
+ const { topics, photos, photoFavourites, selectFavourite, handleTopicClick } = props;
+
+ console.log('#$ PHOTO FAVE:', photoFavourites);
 
   const displayAlert = Object.values(photoFavourites).some((isFavourite) => isFavourite);
 
@@ -15,11 +16,14 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar--logo">PhotoLabs</span>
       <TopicList 
       topics={topics} 
-      photos={photos}/>
+      photos={photos}
+      handleTopicClick={handleTopicClick}
+      />
       <FavIcon 
       photoFavourites={photoFavourites} 
       selectFavourite={selectFavourite}
-      displayAlert={displayAlert}/>
+      displayAlert={displayAlert}
+      />
     </div>
   )
 }
