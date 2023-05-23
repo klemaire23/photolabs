@@ -16,7 +16,7 @@ function PhotoFavButton({ id, photoFavourites, selectFavourite }) {
     } else if (Object.keys(photoFavourites).length === 0) {
       return '#EEEEEE';
     } else if (!photoFavourites[id]) {
-      return '#EEEEEE'
+      return '#EEEEEE';
     }
 
     return '#FF0000';

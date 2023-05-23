@@ -15,6 +15,7 @@ const App = () => {
   useEffect(() => {
     const fetchPhotosAndTopics = async () => {
       try {
+        
         const photosResponse = await fetch('/api/photos');
         const photosData = await photosResponse.json();
         setPhotos(photosData);
@@ -34,12 +35,12 @@ const App = () => {
 
     try {
       if (topicId) {
-        const response = await fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+        const response = await fetch(`http://localhost:8001/api/topics/photos/${topicId}`);
         const data = await response.json();
         setPhotos(data);
       }
     } catch (error) {
-      console.error('There was an error fetching the related photos', error)
+      console.error('There was an error fetching the related photos', error);
     }
   };
 

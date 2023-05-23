@@ -18,5 +18,5 @@ const TopicList = ({ handleTopicClick, topics }) => {
   );
 };
 
-export default TopicList
+export default TopicList;
 
