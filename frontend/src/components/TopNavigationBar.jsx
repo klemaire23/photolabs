@@ -5,24 +5,24 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
- const { topics, photos, photoFavourites, selectFavourite, handleTopicClick } = props;
+  const { topics, photos, photoFavourites, selectFavourite, handleTopicClick } = props;
 
- console.log('#$ PHOTO FAVE:', photoFavourites);
+  //  Changes FavIcon in Nav Bar to indicate if there are liked photos
 
   const displayAlert = Object.values(photoFavourites).some((isFavourite) => isFavourite);
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar--logo">PhotoLabs</span>
-      <TopicList 
-      topics={topics} 
-      photos={photos}
-      handleTopicClick={handleTopicClick}
+      <TopicList
+        topics={topics}
+        photos={photos}
+        handleTopicClick={handleTopicClick}
       />
-      <FavIcon 
-      photoFavourites={photoFavourites} 
-      selectFavourite={selectFavourite}
-      displayAlert={displayAlert}
+      <FavIcon
+        photoFavourites={photoFavourites}
+        selectFavourite={selectFavourite}
+        displayAlert={displayAlert}
       />
     </div>
   )

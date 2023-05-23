@@ -1,43 +1,22 @@
 import React from 'react';
 import PhotoFavButton from '../components/PhotoFavButton';
-import useApplicationData from '../hooks/useApplicationData';
 import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
-  // const { state, actions } = useApplicationData();
-  // const { photoFavourites } = state;
-  // const { selectFavourite } = actions;
-// console.log('#7 PHOTOFAVESS:', photoFavourites);
 
-  // console.log('PROPS:', props);
-  const { selectedPhoto, 
-    photos, 
-    topics, 
-    closeModal, 
-    openModal, 
-    photoFavourites, 
-    selectFavourite 
+  const { selectedPhoto,
+    topics,
+    closeModal,
+    openModal,
+    photoFavourites,
+    selectFavourite
   } = props;
 
-  console.log('#7 PHOTOFAVESS:', photoFavourites);
 
-  // console.log('#3 STATE:', state);
   if (!selectedPhoto) {
     return null;
   }
-
-  const handleFavouriteClick = (event) => {
-    event.stopPropagation();
-    // console.log('##0 LIKE BUTTON CLICKED');
-    selectFavourite(selectedPhoto.id);
-  };
-
-  const isFavourite = photoFavourites && photoFavourites[selectedPhoto.id];
-  console.log('#1 IS THIS WORKING:', isFavourite, photoFavourites, photoFavourites[selectedPhoto.id]);
-
-  const selectedPhotoTopic = topics && topics.length > 0 && topics.find((topic) => topic.id === selectedPhoto.topicId);
-  // const similarPhotos = photos && photos.length > 0 && photos.filter((p) => p.topicId === selectedPhoto.topicId && p.id !== selectedPhoto.id);
   const similarPhotos = selectedPhoto.similar_photos;
 
 
@@ -59,41 +38,38 @@ export const PhotoDetailsModal = (props) => {
             </svg>
           </button>
           <div className="photo-details-modal--image-container">
-          <div className="photo-details-modal--favicon">
-            <PhotoFavButton
-              id={selectedPhoto.id}
-              photoFavourites={photoFavourites}
-              isFavourite={isFavourite}
-              // onClick={handleFavouriteClick}
-              selectFavourite={selectFavourite}
+            <div className="photo-details-modal--favicon">
+              <PhotoFavButton
+                id={selectedPhoto.id}
+                photoFavourites={photoFavourites}
+                selectFavourite={selectFavourite}
               />
+            </div>
           </div>
-          </div>
-            <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
-            <div className="photo-details-modal--user-details">
+          <img className="photo-details-modal--image" src={selectedPhoto.urls.regular} alt={selectedPhoto.alt_description} />
+          <div className="photo-details-modal--user-details">
             <img className="photo-details-modal--user-profile" src={selectedPhoto.user.profile} />
             <div className="photo-details-modal--user-info">
               <div className="photo-details-modal--user">{selectedPhoto.user.username}</div>
               <div className="photo-details-modal--userlocation">{selectedPhoto.location.city}, {selectedPhoto.location.country}</div>
             </div>
-            </div>
-            {selectedPhotoTopic && <div>Topic: {selectedPhotoTopic.title}</div>}
+          </div>
 
           <hr className="horizontal-break" />
 
           <h3 className="photo-details-modal--header">Related Photos</h3>
           <div className="photo-details-modal-similar--container">
-          <div className="photo-details-modal--images">
-          {similarPhotos && similarPhotos.length > 0 ? (
-            <PhotoList
-              photos={similarPhotos}
-              topics={topics}
-              openModal={openModal}
-              photoFavourites={photoFavourites}
-              selectFavourite={selectFavourite}
+            <div className="photo-details-modal--images">
+
+              <PhotoList
+                photos={similarPhotos}
+                topics={topics}
+                openModal={openModal}
+                photoFavourites={photoFavourites}
+                selectFavourite={selectFavourite}
               />
-          ) : null}
-          </div>
+
+            </div>
           </div>
         </div>
       </div>

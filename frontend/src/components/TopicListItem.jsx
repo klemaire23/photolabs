@@ -9,12 +9,12 @@ const TopicListItem = (props) => {
     handleTopicClick(id);
   };
 
-  return(
-  <div className="topic-list--item">
-    <a key={id} id={id} label={label} href={link} onClick={handleTopClick}>
-      <span>{label}</span>
-    </a>
-  </div>
+  return (
+    <div className="topic-list--item">
+      <a key={id} id={id} label={label} href={link} onClick={handleTopClick}>
+        <span>{label}</span>
+      </a>
+    </div>
   );
 };
 

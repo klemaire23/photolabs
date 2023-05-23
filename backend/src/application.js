@@ -8,8 +8,7 @@ const cors = require("cors");
 
 const db = require("./db/index")
 const app = express();
-// console.log('##0 DB:', db);
-// console.log('DB QUERY:', db.query);
+
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
 
