@@ -9,8 +9,8 @@
   top: 51%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 87vh;
-  width: 75vw;
+  height: 90vh;
+  width: 60vw;
   max-height: calc(100vh - 40px);
   max-width: calc(100vw - 40px);
   overflow-y: scroll;
@@ -51,7 +51,7 @@
 // MAIN PHOTO
 
 .photo-details-modal--image {
-  margin-left: 140px;
+  margin-left: 120px;
   width: 80%;
   // border-bottom: 2px solid;
 }

@@ -11,7 +11,11 @@ const TopicListItem = (props) => {
 
   return (
     <div className="topic-list--item">
-      <a key={id} id={id} label={label} href={link} onClick={handleTopClick}>
+      <a key={id} 
+      id={id} 
+      label={label} 
+      href={link} className="topic-list--item-link"
+      onClick={handleTopClick}>
         <span>{label}</span>
       </a>
     </div>

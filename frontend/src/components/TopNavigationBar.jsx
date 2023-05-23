@@ -14,16 +14,20 @@ const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar--logo">PhotoLabs</span>
+
       <TopicList
         topics={topics}
         photos={photos}
         handleTopicClick={handleTopicClick}
       />
-      <FavIcon
-        photoFavourites={photoFavourites}
-        selectFavourite={selectFavourite}
-        displayAlert={displayAlert}
-      />
+
+      <div className="top-nav-bar--favIcon">
+        <FavIcon
+          photoFavourites={photoFavourites}
+          selectFavourite={selectFavourite}
+          displayAlert={displayAlert}
+        />
+      </div>
     </div>
   )
 }
