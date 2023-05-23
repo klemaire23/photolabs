@@ -1,6 +1,3 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
-
 # Photolabs
 
 Welcome to PhotoLabs, an app where you can view and like photos! 
@@ -8,6 +5,8 @@ You can search by category to find photos that interest you, and if you want to 
 While in Modal view, you will see suggested photos that you may also like.
 
 Happy Browsing!
+
+This was a project for students to learn and practice React for Lighthouse Labs' Web Development Bootcamp.
 
 ## Final Product
 
