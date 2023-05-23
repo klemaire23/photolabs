@@ -21,7 +21,7 @@ Specific Topic Page
 !["Screenshot of a Specific Topic"](https://github.com/klemaire23/photolabs/blob/main/frontend/public/imagesForReadMe/photolabs-specific-topic.png?raw=true)
 
 Modal View
-!["Screenshot of the Modal View"]
+!["Screenshot of the Modal View"](https://github.com/klemaire23/photolabs/blob/main/frontend/public/imagesForReadMe/photolabs-modal.png?raw=true)
 
 
 ## Setup
